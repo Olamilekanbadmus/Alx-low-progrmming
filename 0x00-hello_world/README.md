@@ -5,3 +5,4 @@ assembler
 puts.c
 ptintf
 size
+intel
