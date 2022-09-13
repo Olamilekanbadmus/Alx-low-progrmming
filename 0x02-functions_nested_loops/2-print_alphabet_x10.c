@@ -1,27 +1,21 @@
-#include <stdio.h>
+#include "holberton.h"
 
 /**
- * main - print first 10 alphabet 
+ * print_alphabet_x10 - print lowercase alphabet ten times
  * Return: 0
  */
 
-int main(void)
+void print_alphabet_x10(void)
 {
+	char alpha;
 	int counter;
-	int countto = 10;
-	long a = 1;
-	long b = 2;
 
-	for (counter = 1; counter <= (countto / 2); counter++)
+	for (counter = 1; counter <= 10; counter++)
 	{
-		printf("%li %li ", a, b);
-		a += b;
-		b += a;
+		for (alpha = 'a'; alpha <= 'z'; alpha++)
+		{
+			_putchar(alpha);
+		}
+		_putchar('\n');
 	}
-	if (countto % 2 == 1)
-		printf("%li", a);
-
-	printf("\n");
-
-	return (0);
 }
