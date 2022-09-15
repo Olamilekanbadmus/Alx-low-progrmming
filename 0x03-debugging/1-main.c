@@ -8,16 +8,15 @@
 int main(void)
 {
 	int i;
-	/**
-	* variable decleration
-	*/
 
 	printf("Infinite loop incoming :(\n");
 
 	i = 0;
 
-	while (i < 10)
-	{
+/*
+ /* 	while (i < 10)
+ /*
+ /* 	{
 		putchar(i);
 	}
 
