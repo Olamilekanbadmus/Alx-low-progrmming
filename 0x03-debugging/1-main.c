@@ -10,7 +10,8 @@ int main(void)
 	int i;
 	/**
 	* variable decleration
-	*
+	*/
+
 	printf("Infinite loop incoming :(\n");
 
 	i = 0;
