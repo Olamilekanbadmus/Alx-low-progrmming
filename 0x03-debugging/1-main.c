@@ -9,8 +9,8 @@ int main(void)
 {
 	int i;
 	/**
-	*/ variable decleration
-
+	* variable decleration
+	*
 	printf("Infinite loop incoming :(\n");
 
 	i = 0;
