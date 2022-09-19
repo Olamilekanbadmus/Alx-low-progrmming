@@ -1,15 +1,20 @@
 #include "main.h"
 
 /**
- * main - check the code for main.
- *
- * Return: Always 0.
+ * _strlen - returns the length of a string
+ * @s: string
+ * Return: length
  */
-int main(void)
-{
-	char *str;
 
-	str = "I do not fear computers. I fear the lack of them - Isaac Asimov";
-	_puts(str);
-	return (0);
-}
+int _strlen(char *s)
+{
+	int len = 0;
+
+	while (*s != '\0')
+	{
+		len++;
+		s++;
+	}
+
+	return (len);
+
