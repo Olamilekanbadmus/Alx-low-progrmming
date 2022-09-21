@@ -20,7 +20,9 @@ int _strcmp(char *s1, char *s2)
 		return (0);
 }
 
-/* another method
+/*
+ **
+ * another method
 int _strcmp(char *s1, char *s2)
 {
         // while neither strings have ended
