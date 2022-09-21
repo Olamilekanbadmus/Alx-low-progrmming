@@ -1,5 +1,5 @@
-#ifndef MAIN_H
-#define MAIN_H
+#ifndef main_H
+#define main_H
 
 /**
  * _putchar - puts character to standard output
