@@ -24,7 +24,9 @@ char *_memcpy(char *dest, char *src, unsigned int n)
 	return (dest);
 }
 
-/* pointer arithmetic version
+/*
+ *
+ ** pointer arithmetic version
 char *_memcpy(char *dest, char *src, unsigned int n)
 {
    int size = n;
