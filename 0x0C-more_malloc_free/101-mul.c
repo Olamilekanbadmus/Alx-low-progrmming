@@ -1,63 +1,45 @@
 #include <stdlib.h>
-#include <stdio.h>
 #include "main.h"
 
 /**
- * _strlen - returns the length of a string
- * @s: string
- * Return: length
+ * _realloc - allocate memory and set all values to 0
+ * @ptr: pointer to the memory previously allocated (malloc(old_size))
+ * @old_size: size previously allocated
+ * @new_size: new size to reallocate
+ * Return: pointer to reallocated memory
  */
 
-int _strlen(char *s)
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
-	int len = 0;
+	void *p;
+	unsigned int i;
 
-	while (*s != '\0')
-		len++, s++;
-
-	return (len);
-}
-
-/**
- * argstostr - concatenates all the arguments of your program
- * @ac: argc
- * @av: arguments
- * Return: pointer to array
- */
-
-char *argstostr(int ac, char **av)
-{
-	char *s;
-	int len = 0, i, j, k = 0;
-
-	if (ac == 0 || av == NULL) /* validate input */
-		return (NULL);
-
-	/* find length to malloc */
-	for (i = 0; i < ac; i++)
+	if (new_size == 0 && ptr != NULL) /* free memory if reallocate 0 */
 	{
-		len += _strlen(av[i]);
-	}
-	len += (ac + 1); /* add space for newlines and null terminator */
-
-	/* allocate memory and free if error */
-	s = malloc(len * sizeof(char));
-
-	if (s == NULL)
-	{
-		free(s);
+		free(ptr);
 		return (NULL);
 	}
 
-	/* insert each arg into *str */
-	for (i = 0; i < ac; i++)
+	if (new_size == old_size) /* return ptr if reallocating same old size */
+		return (ptr);
+
+	if (ptr == NULL) /* malloc new size if ptr is originally null */
 	{
-		for (j = 0; j < _strlen(av[i]); j++)
-		{
-			s[k++] = av[i][j];
-		}
-		s[k++] = '\n';
+		p = malloc(new_size);
+		if (p == NULL)
+			return (NULL);
+		else
+			return (p);
 	}
 
-	return (s);
+	p = malloc(new_size); /* malloc and check error */
+	if (p == NULL)
+		return (NULL);
+
+	/* fill up values up till minimum of old or new size */
+	for (i = 0; i < old_size && i < new_size; i++)
+		*((char *)p + i) = *((char *)ptr + i);
+	free(ptr); /* free old ptr */
+
+	return (p);
 }

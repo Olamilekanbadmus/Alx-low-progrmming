@@ -1,45 +1,29 @@
 #include <stdlib.h>
-#include <stdio.h>
 #include "main.h"
 
 /**
- * str_concat - concatenates two strings
- * @s1: string 1
- * @s2: string 2
- * Return: pointer to concatenated string
+ * _calloc - allocate memory and set all values to 0
+ * @nmemb: size
+ * @size: sizeof(datatype)
+ * Return: pointer to calloc'd string
  */
 
-char *str_concat(char *s1, char *s2)
+void *_calloc(unsigned int nmemb, unsigned int size)
 {
-	char *concat;
-	int len1 = 0, len2 = 0, i = 0, j = 0;
+	void *ptr;
+	unsigned int i; /* match unsigned arguments */
 
-	if (s1 == NULL)
-		s1 = "";
-	if (s2 == NULL)
-		s2 = "";
-	while (*(s1 + i))
-		len1++, i++;
-	while (*(s2 + j))
-		len2++, j++;
-	len2++; /* add null terminator to length */
-
-	concat = malloc(sizeof(char) * (len1 + len2)); /*alloc memory*/
-
-	if (concat == NULL) /* validate memory */
+	if (nmemb <= 0 || size <= 0) /* validate input */
 		return (NULL);
 
-	i = 0, j = 0;
-	while (i < len1) /* concatenate */
-	{
-		*(concat + i) = *(s1 + i);
-		i++;
-	}
-	while (j < len2)
-	{
-		*(concat + i) = *(s2 + j);
-		i++, j++;
-	}
+	/* allocate memory and check if error */
+	ptr = malloc(nmemb * size);
+	if (ptr == NULL)
+		return (NULL);
 
-	return (concat);
+	/* set allocated memory values to 0 */
+	for (i = 0; i < nmemb * size; i++)
+		*((char *)ptr + i) = 0; /* type cast assigning values*/
+
+	return (ptr);
 }
