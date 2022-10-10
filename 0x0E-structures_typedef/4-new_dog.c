@@ -16,14 +16,14 @@ int len(char *str)
 	return (i);
 }
 /**
- * strcpy - copies the string pointed to by src,
+ * cpy - copies the string pointed to by src,
  * including the terminating null byte (\0),
  * to the buffer pointed to by dest
  * @dest: copy source to this buffer
  * @src: this is the source to copy
  * Return: copy of original source
  */
-char *strcpy(char *dest, char *src)
+char *cpy(char *dest, char *src)
 {
 	int i;
 
@@ -44,23 +44,22 @@ dog_t *new_dog(char *name, float age, char *owner)
 	char *copy_of_name;
 	char *copy_of_owner;
 
-	dog1 = malloc(sizeof(dog_t)); /* validate if dog1 initiated correctly */
+	dog1 = malloc(sizeof(dog_t));
 	if (dog1 == NULL)
 		return (NULL);
 
 	dog1->age = age;
 
-	/* make copies of struct members and validate, else free on error */
-	/* set values of struct members to copies of arguments or set to NULL */
 	if (name != NULL)
 	{
 		copy_of_name = malloc(len(name) + 1);
 		if (copy_of_name == NULL)
 		{
+			free(copy_of_name);
 			free(dog1);
 			return (NULL);
 		}
-		dog1->name = strcpy(copy_of_name, name);
+		dog1->name = cpy(copy_of_name, name);
 	}
 	else
 		dog1->name = NULL;
@@ -70,11 +69,11 @@ dog_t *new_dog(char *name, float age, char *owner)
 		copy_of_owner = malloc(len(owner) + 1);
 		if (copy_of_owner == NULL)
 		{
-			free(copy_of_name);
+			free(copy_of_owner);
 			free(dog1);
 			return (NULL);
 		}
-		dog1->owner = strcpy(copy_of_owner, owner);
+		dog1->owner = cpy(copy_of_owner, owner);
 	}
 	else
 		dog1->owner = NULL;
