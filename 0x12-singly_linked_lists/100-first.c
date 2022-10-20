@@ -1,12 +1,12 @@
 #include <stdio.h>
 
 /**
- * main - check the code for Holberton School students.
- *
- * Return: Always 0.
+ * execute_before_main - executes this function before main function
+ * Note: made possible by prior declaration of "__attribute__ ((constructor))"
  */
-int main(void)
+
+void __attribute__ ((constructor)) execute_before_main()
 {
-	printf("(A tortoise, having pretty good,challenges one to a race.)\n");
-	return (0);
+	printf("You're beat! and yet, you must allow,\n");
+	printf("I bore my house upon my back!\n");
 }
